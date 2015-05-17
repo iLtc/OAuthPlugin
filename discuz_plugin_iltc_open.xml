@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X3.2]]></item>
+	<item id="Time"><![CDATA[2015-05-17 00:19]]></item>
+	<item id="From"><![CDATA[Discuz! Board (http://localhost/bbs/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[0]]></item>
+			<item id="name"><![CDATA[¿ª·ÅÆ½Ì¨½Ó¿Ú]]></item>
+			<item id="identifier"><![CDATA[iltc_open]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[iltc_open/]]></item>
+			<item id="copyright"><![CDATA[]]></item>
+			<item id="modules"><![CDATA[a:0:{}]]></item>
+			<item id="version"><![CDATA[0.0.1]]></item>
+		</item>
+		<item id="version"><![CDATA[X3.2]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[Í¨ÐÅÃÜÔ¿]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[token]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[xgg4VkDRYT_Jl6Xl7B3VS69oEUJeEoUm]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[»ØµôµØÖ·]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[callback]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[http://localhost/open]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+	</item>
+</root>
