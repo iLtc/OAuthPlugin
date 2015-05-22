@@ -23,7 +23,10 @@ if(strpos($callback_temp, $config['callback']) !== 0){
 }
 
 if(!$_G['uid']){ //¼ì²éÊÇ·ñÒÑµÇÂ½
-    showmessage('not_loggedin', NULL, array(), array('login' => 1));
+    //showmessage('not_loggedin', NULL, array(), array('login' => 1));
+	$back = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	$url = 'member.php?mod=logging&action=login&referer='.urlencode($back);
+	header('Location: '.$url);
     exit;
 }else{
     $data = array(
