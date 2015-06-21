@@ -4,14 +4,18 @@
 	}
 	
 	$result = array();
-	$sql = "SELECT uid, username, email, adminid, groupid, extgroupids, allowadmincp, credits, newpm FROM ".DB::table('common_member')." WHERE ";
+	$sql = "SELECT member.uid, username, email, adminid, groupid, extgroupids, allowadmincp, credits, newpm, extcredits1, extcredits2 FROM "
+        .DB::table('common_member member').", ".DB::table('common_member_count count')
+        ." WHERE member.uid = count.uid AND ";
 	if(isset($_G['gp_username'])){
-		$sql .= "username = '".$_G['gp_username']."'";
-	}elseif(isset($_G['gp_email'])){
-		$sql .= "email = '".$_G['gp_email']."'";
+		$sql .= "username = '{$_G['gp_username']}'";
+	}else if(isset($_G['gp_email'])){
+		$sql .= "email = '{$_G['gp_email']}'";
+	}else if(isset($_G['gp_uid'])){
+		$sql .= "member.uid = '{$_G['gp_uid']}'";
 	}else{
-		$sql .= "uid = '".$_G['gp_uid']."'";
-	}
+        exit('Missing Parameter');
+    }
 
 	$sql .= " LIMIT 1";
 	$query = DB::query($sql);
@@ -22,8 +26,6 @@
         $result['data']['extgroupids'] = explode("\t", $result['data']['extgroupids']);
         $result['data']['avatar'] = $_G['siteurl'].'uc_server/avatar.php?uid='.$result['data']['uid'];
 		$result['status'] = 'success';
-
-
 	}else{
 		unset($result['data']);
 		$result['status'] = 'fail';
