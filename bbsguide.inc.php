@@ -116,3 +116,75 @@ function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
     }
     return array('forumnames' => $forumnames, 'threadcount' => $threadcount, 'threadlist' => $threadlist);
 }
+
+function guide_procthread($thread) {
+    global $_G;
+    $todaytime = strtotime(dgmdate(TIMESTAMP, 'Ymd'));
+    $thread['lastposterenc'] = rawurlencode($thread['lastposter']);
+    $thread['multipage'] = '';
+    $topicposts = $thread['special'] ? $thread['replies'] : $thread['replies'] + 1;
+    if($topicposts > $_G['ppp']) {
+        $pagelinks = '';
+        $thread['pages'] = ceil($topicposts / $_G['ppp']);
+        for($i = 2; $i <= 6 && $i <= $thread['pages']; $i++) {
+            $pagelinks .= "<a href=\"forum.php?mod=viewthread&tid=$thread[tid]&amp;extra=$extra&amp;page=$i\">$i</a>";
+        }
+        if($thread['pages'] > 6) {
+            $pagelinks .= "..<a href=\"forum.php?mod=viewthread&tid=$thread[tid]&amp;extra=$extra&amp;page=$thread[pages]\">$thread[pages]</a>";
+        }
+        $thread['multipage'] = '&nbsp;...'.$pagelinks;
+    }
+
+    if($thread['highlight']) {
+        $string = sprintf('%02d', $thread['highlight']);
+        $stylestr = sprintf('%03b', $string[0]);
+
+        $thread['highlight'] = ' style="';
+        $thread['highlight'] .= $stylestr[0] ? 'font-weight: bold;' : '';
+        $thread['highlight'] .= $stylestr[1] ? 'font-style: italic;' : '';
+        $thread['highlight'] .= $stylestr[2] ? 'text-decoration: underline;' : '';
+        $thread['highlight'] .= $string[1] ? 'color: '.$_G['forum_colorarray'][$string[1]] : '';
+        $thread['highlight'] .= '"';
+    } else {
+        $thread['highlight'] = '';
+    }
+
+    $thread['recommendicon'] = '';
+    if(!empty($_G['setting']['recommendthread']['status']) && $thread['recommends']) {
+        foreach($_G['setting']['recommendthread']['iconlevels'] as $k => $i) {
+            if($thread['recommends'] > $i) {
+                $thread['recommendicon'] = $k+1;
+                break;
+            }
+        }
+    }
+
+    $thread['moved'] = $thread['heatlevel'] = $thread['new'] = 0;
+    $thread['icontid'] = $thread['forumstick'] || !$thread['moved'] && $thread['isgroup'] != 1 ? $thread['tid'] : $thread['closed'];
+    $thread['folder'] = 'common';
+    $thread['weeknew'] = TIMESTAMP - 604800 <= $thread['dbdateline'];
+    if($thread['replies'] > $thread['views']) {
+        $thread['views'] = $thread['replies'];
+    }
+    if($_G['setting']['heatthread']['iconlevels']) {
+        foreach($_G['setting']['heatthread']['iconlevels'] as $k => $i) {
+            if($thread['heats'] > $i) {
+                $thread['heatlevel'] = $k + 1;
+                break;
+            }
+        }
+    }
+    $thread['istoday'] = $thread['dateline'] > $todaytime ? 1 : 0;
+    $thread['dbdateline'] = $thread['dateline'];
+    $thread['dateline'] = dgmdate($thread['dateline'], 'u', '9999', getglobal('setting/dateformat'));
+    $thread['dblastpost'] = $thread['lastpost'];
+    $thread['lastpost'] = dgmdate($thread['lastpost'], 'u');
+
+    if(in_array($thread['displayorder'], array(1, 2, 3, 4))) {
+        $thread['id'] = 'stickthread_'.$thread['tid'];
+    } else {
+        $thread['id'] = 'normalthread_'.$thread['tid'];
+    }
+    $thread['rushreply'] = getstatus($thread['status'], 3);
+    return $thread;
+}
