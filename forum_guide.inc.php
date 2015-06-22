@@ -20,7 +20,17 @@ foreach($forumnames as $fid => $forum){
     $data['forumnames'][$fid] = $forum['name'];
 }
 
-echo(json_encode($data));
+echo json($data);
+
+function json($datas, $top = true){
+    //由于json不能转换GBK数据，编码前需要把GBK转成UTF8
+    foreach($datas as $i => $data){
+        if(is_array($data)) $datas[$i] = json($data, false);
+        else $datas[$i] = iconv("GBK", "UTF-8", $data);
+    }
+
+    return $top ? json_encode($datas) : $datas;
+}
 
 function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
     global $_G;
