@@ -10,11 +10,13 @@ if(!in_array($view, array('hot', 'digest', 'new', 'my', 'newthread', 'sofa'))) {
 }
 $perpage = 50;
 $start = $perpage * ($_G['page'] - 1);
-$data = array();
 
-$data[$view] = get_guide_list($view, $start, $perpage);
+$data = get_guide_list($view, $start, $perpage);
 
-var_dump($data);
+$forumnames = $data['forumnames'];
+foreach($forumnames as $fid => $forum){
+    $data['forumnames'][$fid] = $forum['name'];
+}
 
 function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
     global $_G;
