@@ -9,7 +9,7 @@ if(!in_array($view, array('hot', 'digest', 'new', 'my', 'newthread', 'sofa'))) {
     $view = 'hot';
 }
 
-$perpage = (isset($_G['gp_perpage'])) ? $_G['gp_perpage'] : 10;
+$perpage = (isset($_G['gp_perpage'])) ? $_G['gp_perpage'] : 20;
 
 $start = $perpage * ($_G['page'] - 1);
 
@@ -20,7 +20,7 @@ foreach($forumnames as $fid => $forum){
     $data['forumnames'][$fid] = $forum['name'];
 }
 
-var_dump($data);
+echo(json_encode($data));
 
 function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
     global $_G;
