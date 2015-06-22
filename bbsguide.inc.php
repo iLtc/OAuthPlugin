@@ -8,7 +8,7 @@ loadcache('forum_guide');
 if(!in_array($view, array('hot', 'digest', 'new', 'my', 'newthread', 'sofa'))) {
     $view = 'hot';
 }
-$perpage = 50;
+$perpage = 10;
 $start = $perpage * ($_G['page'] - 1);
 
 $data = get_guide_list($view, $start, $perpage);
@@ -139,7 +139,7 @@ function guide_procthread($thread) {
         $thread['multipage'] = '&nbsp;...'.$pagelinks;
     }
 
-    /*if($thread['highlight']) {
+    if($thread['highlight']) {
         $string = sprintf('%02d', $thread['highlight']);
         $stylestr = sprintf('%03b', $string[0]);
 
@@ -151,7 +151,7 @@ function guide_procthread($thread) {
         $thread['highlight'] .= '"';
     } else {
         $thread['highlight'] = '';
-    }*/
+    }
 
     $thread['recommendicon'] = '';
     if(!empty($_G['setting']['recommendthread']['status']) && $thread['recommends']) {
