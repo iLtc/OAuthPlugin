@@ -18,6 +18,8 @@ foreach($forumnames as $fid => $forum){
     $data['forumnames'][$fid] = $forum['name'];
 }
 
+var_dump($data);
+
 function get_guide_list($view, $start = 0, $num = 50, $again = 0) {
     global $_G;
     $setting_guide = unserialize($_G['setting']['guide']);
