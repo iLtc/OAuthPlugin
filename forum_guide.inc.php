@@ -20,6 +20,8 @@ foreach($forumnames as $fid => $forum){
     $data['forumnames'][$fid] = $forum['name'];
 }
 
+$data['status'] = 'success';
+
 echo json($data);
 
 function json($datas, $top = true){
