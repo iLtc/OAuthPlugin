@@ -8,7 +8,9 @@ loadcache('forum_guide');
 if(!in_array($view, array('hot', 'digest', 'new', 'my', 'newthread', 'sofa'))) {
     $view = 'hot';
 }
-$perpage = 10;
+
+$perpage = (isset($_G['perpage'])) ? $_G['perpage'] : 10;
+
 $start = $perpage * ($_G['page'] - 1);
 
 $data = get_guide_list($view, $start, $perpage);
