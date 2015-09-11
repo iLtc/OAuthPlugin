@@ -1,6 +1,10 @@
 <?php
 if(!defined('IN_DISCUZ')){
-    exit('Access Denied');
+	$result = array(
+		'status' => 'error',
+		'error' => 'Access Denied'
+	);
+    exit(json_encode($result));
 }
 
 $result = array();
@@ -14,7 +18,11 @@ if(isset($_G['gp_username'])){
 }else if(isset($_G['gp_uid'])){
     $sql .= "member.uid = '{$_G['gp_uid']}'";
 }else{
-    exit('Missing Parameter');
+	$result = array(
+		'status' => 'error',
+		'error' => 'Missing Parameter'
+	);
+    exit(json_encode($result));
 }
 
 $sql .= " LIMIT 1";
