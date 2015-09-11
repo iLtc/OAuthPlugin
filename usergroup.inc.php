@@ -11,6 +11,7 @@ $result = array();
 $i = 0;
 $query = DB::query("SELECT groupid, radminid, type, grouptitle FROM ".DB::table('common_usergroup')." ORDER BY creditshigher");
 while($temp = DB::fetch($query)) {
+	$temp['grouptitle'] = iconv("GBK", "UTF-8", $temp['grouptitle']);
     $result['data'][$i++] = $temp;
     $result['status'] = 'success';
 }
