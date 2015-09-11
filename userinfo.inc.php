@@ -4,7 +4,7 @@ if(!defined('IN_DISCUZ')){
 }
 
 $result = array();
-$sql = "SELECT member.uid, username, email, adminid, groupid, extgroupids, allowadmincp, credits, newpm, extcredits1, extcredits2 FROM "
+$sql = "SELECT member.uid, username, email, adminid, groupid, extgroupids, allowadmincp, credits, newpm, extcredits1 AS ml, extcredits2 AS sp FROM "
     .DB::table('common_member member').", ".DB::table('common_member_count count')
     ." WHERE member.uid = count.uid AND ";
 if(isset($_G['gp_username'])){
