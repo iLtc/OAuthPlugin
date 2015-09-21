@@ -17,8 +17,9 @@ $result['forum']['name'] = iconv("GBK", "UTF-8", $result['forum']['name']);
 $page = isset($_G['gp_page']) ? $_G['gp_page'] : 1;
 $limit = isset($_G['gp_limit']) ? $_G['gp_limit'] : 20;
 
-$sql = "SELECT tid, author, authorid, subject, dateline, lastpost, lastposter, views, replies FROM "
-	.DB::table('forum_thread')." WHERE fid = $fid AND displayorder != -1 ORDER BY tid DESC LIMIT ".(($page - 1) * $limit).", $limit";
+$sql = "SELECT thread.tid, thread.author, thread.authorid, thread.subject, thread.dateline, lastpost, lastposter, views, replies, message FROM "
+	    .DB::table('forum_thread thread').", ".DB::table('forum_post post')
+		." WHERE thread.fid = $fid AND thread.displayorder >= 0 AND thread.fid = post.fid AND post.first = 1 ORDER BY thread.tid DESC LIMIT ".(($page - 1) * $limit).", $limit";
 
 $query = DB::query($sql);
 
@@ -28,6 +29,7 @@ do {
 	$temp['author'] = iconv("GBK", "UTF-8", $temp['author']);
 	$temp['subject'] = iconv("GBK", "UTF-8", $temp['subject']);
 	$temp['lastposter'] = iconv("GBK", "UTF-8", $temp['lastposter']);
+	$temp['message'] = iconv("GBK", "UTF-8", $temp['message']);
     $result['threads'][] = $temp;
 } while($temp = DB::fetch($query));
 
