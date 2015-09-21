@@ -18,7 +18,7 @@ $page = isset($_G['gp_page']) ? $_G['gp_page'] : 1;
 $limit = isset($_G['gp_limit']) ? $_G['gp_limit'] : 20;
 
 $sql = "SELECT tid, author, authorid, subject, dateline, lastpost, lastposter, views, replies FROM "
-	.DB::table('forum_thread')." WHERE fid = $fid LIMIT ".(($page - 1) * $limit).", $limit";
+	.DB::table('forum_thread')." WHERE fid = $fid AND displayorder != -1 ORDER BY tid DESC LIMIT ".(($page - 1) * $limit).", $limit";
 
 $query = DB::query($sql);
 

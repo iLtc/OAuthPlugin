@@ -8,7 +8,7 @@ $result = array();
 //TODO: Show sprcial forum to login user
 
 $sql = "SELECT fid, fup, type, name, threads, posts, todayposts, yesterdayposts, lastpost FROM "
-	.DB::table('forum_forum')." WHERE status = 1 ORDER BY type DESC, displayorder";
+	.DB::table('forum_forum')." WHERE status = 1";
 $query = DB::query($sql);
 
 while($temp = DB::fetch($query)) {

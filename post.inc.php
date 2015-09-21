@@ -19,7 +19,7 @@ $page = isset($_G['gp_page']) ? $_G['gp_page'] : 1;
 $limit = isset($_G['gp_limit']) ? $_G['gp_limit'] : 20;
 
 $sql = "SELECT pid, first, author, authorid, subject, dateline, message FROM "
-	.DB::table('forum_post')." WHERE tid = $tid LIMIT ".(($page - 1) * $limit).", $limit";
+	.DB::table('forum_post')." WHERE tid = $tid AND invisible > 0 ORDER BY pid LIMIT ".(($page - 1) * $limit).", $limit";
 
 $query = DB::query($sql);
 
