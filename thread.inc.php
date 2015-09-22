@@ -19,7 +19,7 @@ $limit = isset($_G['gp_limit']) ? $_G['gp_limit'] : 20;
 
 $sql = "SELECT thread.tid, thread.author, thread.authorid, thread.subject, thread.dateline, lastpost, lastposter, views, replies, message FROM "
 	    .DB::table('forum_thread thread').", ".DB::table('forum_post post')
-		." WHERE thread.fid = $fid AND thread.displayorder >= 0 AND thread.tid = post.tid AND post.first = 1 ORDER BY thread.tid DESC LIMIT ".(($page - 1) * $limit).", $limit";
+		." WHERE thread.fid = $fid AND thread.displayorder >= 0 AND thread.tid = post.tid AND post.first = 1 ORDER BY thread.lastpost DESC LIMIT ".(($page - 1) * $limit).", $limit";
 
 $query = DB::query($sql);
 
