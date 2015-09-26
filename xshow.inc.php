@@ -8,10 +8,10 @@ $wzkk_xshow = $_G['cache']['plugin']['wzkk_xshow'];
 $datapic = array();
 $fids = $wzkk_xshow['only_pic'] ? 'AND t.fid IN('.$wzkk_xshow['only_pic'].')' : '';
 $PicNums = $wzkk_xshow['pic_schnum'];
-/**ljmĞŞ¸ÄÍ¼Æ¬ÏÔÊ¾£¬½ûÖ¹ÏÔÊ¾·ÇÏÔ°æ¿éµÄÍ¼Æ¬*/	
+/**ljmä¿®æ”¹å›¾ç‰‡æ˜¾ç¤ºï¼Œç¦æ­¢æ˜¾ç¤ºéæ˜¾ç‰ˆå—çš„å›¾ç‰‡*/	
 //echo $wzkk_xshow['not_show'];
-$notshow = $wzkk_xshow['not_show'] ? 'AND t.fid not IN('.$wzkk_xshow['not_show'].')' : '';//²»ÏÔÊ¾µÄ°æ¿é  all
-//²åÈëµ½ÏÂÃæµÄsqlÖĞ
+$notshow = $wzkk_xshow['not_show'] ? 'AND t.fid not IN('.$wzkk_xshow['not_show'].')' : '';//ä¸æ˜¾ç¤ºçš„ç‰ˆå—  all
+//æ’å…¥åˆ°ä¸‹é¢çš„sqlä¸­
 /**end ljm*/
 if ($wzkk_xshow['pic_transfer'] == 1) { 
 	$orderby = 'tid'; 
@@ -30,4 +30,4 @@ while($pic = DB::fetch($query)) {
 	$datapic[] = $pics;
 }
 
-var_dump($wzkk_xshow, $query, $datapic);
+var_dump($query, $datapic);
