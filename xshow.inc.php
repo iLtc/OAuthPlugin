@@ -30,4 +30,4 @@ while($pic = DB::fetch($query)) {
 	$datapic[] = $pics;
 }
 
-var_dump($query, $datapic);
+var_dump("SELECT attach.attachment,t.tid, t.fid, t.subject FROM ".DB::table('forum_threadimage')." attach INNER JOIN ".DB::table('forum_thread')." t ON t.tid=attach.tid WHERE t.isgroup=0 AND t.displayorder>=0 $fids $notshow GROUP BY attach.tid ORDER BY $orderby DESC LIMIT 0, ".$PicNums, $datapic);
