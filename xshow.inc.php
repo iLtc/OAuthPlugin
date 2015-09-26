@@ -27,7 +27,7 @@ switch($_G['gp_action']){
 		while($pic = DB::fetch($query)) {
 			$pics['src'] = $_G['setting']['attachurl'].'forum/'.$pic['attachment'];
 			$pics['tid'] = $pic['tid'];
-			$pics['pictexts'] = iconv("GBK", "UTF-8", str_replace('\'', ' ',$pic['subject']));
+			$pics['subject'] = iconv("GBK", "UTF-8", str_replace('\'', ' ',$pic['subject']));
 			$datapic[] = $pics;
 		}
 		$result['images'] = $datapic;
