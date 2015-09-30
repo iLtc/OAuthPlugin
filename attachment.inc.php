@@ -22,7 +22,7 @@ switch($_G['gp_action']){
 			$result['data']['filename'] = iconv("GBK", "UTF-8", $result['data']['filename']);
 			$result['data']['description'] = iconv("GBK", "UTF-8", $result['data']['description']);
 			$result['data']['attachment'] = $_G['setting']['attachurl'].'forum/'.$result['data']['attachment'];
-		}
+		}else showError('No Attachment Found');
 		showResult($result, 'success');
 		break;
 	
