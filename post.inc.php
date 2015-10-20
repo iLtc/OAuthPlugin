@@ -38,7 +38,10 @@ if(IS_GET){
 }else{
 	if(!isset($_G['gp_message'])) showError('Missing Parameter');
 	
-	$pid = C::t('forum_post')->insert(array(
+	$pid = C::t('forum_post')->count_table('tid:'.$tid) + 1;
+	
+	C::t('forum_post')->insert('tid:'.$tid, array(
+		'pid' => $pid,
 		'tid' => $tid,
 		'fid' => $result['thread']['fid'],
 		'author' => $user_info['username'],
@@ -48,7 +51,7 @@ if(IS_GET){
 		'useip' => $_G['clientip'],
 		'port' => $_G['remoteport'],
 		'position' => $result['thread']['replies'] + 2 //主楼占一个位置
-	), true);
+	));
 	
 	//更新回帖信息
 	C::t('forum_thread')->update($tid, array(
@@ -62,6 +65,5 @@ if(IS_GET){
 		'message' => $_G['gp_message']
 	);
 }
-
 
 showResult($result, 'success');
