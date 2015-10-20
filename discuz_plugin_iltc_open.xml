@@ -2,48 +2,48 @@
 <root>
 	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
 	<item id="Version"><![CDATA[X3.2]]></item>
-	<item id="Time"><![CDATA[2015-05-17 00:19]]></item>
-	<item id="From"><![CDATA[Discuz! Board (http://localhost/bbs/)]]></item>
+	<item id="Time"><![CDATA[2015-10-20 11:07]]></item>
+	<item id="From"><![CDATA[Discuz! Board (http://hmt.iltcapp.net/bbs/)]]></item>
 	<item id="Data">
 		<item id="plugin">
 			<item id="available"><![CDATA[1]]></item>
 			<item id="adminid"><![CDATA[0]]></item>
-			<item id="name"><![CDATA[开放平台接口]]></item>
+			<item id="name"><![CDATA[开放平台论坛接口]]></item>
 			<item id="identifier"><![CDATA[iltc_open]]></item>
 			<item id="description"><![CDATA[]]></item>
 			<item id="datatables"><![CDATA[]]></item>
 			<item id="directory"><![CDATA[iltc_open/]]></item>
 			<item id="copyright"><![CDATA[]]></item>
-			<item id="modules"><![CDATA[a:0:{}]]></item>
-			<item id="version"><![CDATA[0.2.1]]></item>
+			<item id="modules"><![CDATA[b:0;]]></item>
+			<item id="version"><![CDATA[0.2.2]]></item>
 		</item>
 		<item id="version"><![CDATA[X3.2]]></item>
 		<item id="var">
 			<item id="0">
 				<item id="displayorder"><![CDATA[0]]></item>
-				<item id="title"><![CDATA[开放平台通信密钥]]></item>
-				<item id="description"><![CDATA[]]></item>
-				<item id="variable"><![CDATA[token]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![xgg4VkDRYT_Jl6Xl7B3VS69oEUJeEoUm]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="1">
-				<item id="displayorder"><![CDATA[1]]></item>
-				<item id="title"><![CDATA[开放平台回掉地址]]></item>
-				<item id="description"><![CDATA[]]></item>
-				<item id="variable"><![CDATA[callback]]></item>
-				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[http://hmt.iltcapp.net/open]]></item>
-				<item id="extra"><![CDATA[]]></item>
-			</item>
-			<item id="2">
-				<item id="displayorder"><![CDATA[2]]></item>
 				<item id="title"><![CDATA[开放平台 Token 校验地址]]></item>
 				<item id="description"><![CDATA[]]></item>
 				<item id="variable"><![CDATA[token_info]]></item>
 				<item id="type"><![CDATA[text]]></item>
-				<item id="value"><![CDATA[http://hmt.iltcapp.net/open/OAuth/get_token_info]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[开放平台通信密钥]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[token]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="2">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[开放平台回掉地址]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[callback]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[]]></item>
 				<item id="extra"><![CDATA[]]></item>
 			</item>
 		</item>
