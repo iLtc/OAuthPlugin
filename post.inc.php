@@ -38,7 +38,10 @@ if(IS_GET){
 }else{
 	if(!isset($_G['gp_message'])) showError('Missing Parameter');
 	
-	$pid = C::t('forum_post')->count_table('tid:'.$tid) + 1;
+	$query = DB::query("SELECT pid FROM ".DB::table('forum_post')." ORDER BY pid DESC LIMIT 1");
+	
+	$temp = DB::fetch($query);
+	$pid = $temp['pid'] + 1;
 	
 	C::t('forum_post')->insert('tid:'.$tid, array(
 		'pid' => $pid,
